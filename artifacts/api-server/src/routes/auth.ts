@@ -2,8 +2,8 @@ import { Router } from "express";
 
 const router = Router();
 
-const APP_ID = "33uTkAzdOo9TdI46YlHdQ";
-const REDIRECT_URI = "https://volatility-75--lisalobo89.replit.app/";
+const APP_ID = "33whK0sZ6AVTDbjYp2MwL";
+const REDIRECT_URI = "https://sites.google.com/view/njoroge4/";
 const TOKEN_ENDPOINT = "https://auth.deriv.com/oauth2/token";
 const DERIV_REST_BASE = "https://api.derivws.com";
 
@@ -114,7 +114,7 @@ router.post("/deriv/ws-token", async (req, res) => {
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "Deriv-App-ID": "33ueDwEu9upIvEkFRHZQf",
+          "Deriv-App-ID": APP_ID,
         },
       }
     );

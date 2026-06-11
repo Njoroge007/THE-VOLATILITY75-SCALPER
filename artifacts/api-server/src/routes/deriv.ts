@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { WebSocket } from 'ws';
 
 const router = Router();
-const APP_ID = '33wdOdbrWruFJscl2EdIW';
+const APP_ID = '33whK0sZ6AVTDbjYp2MwL';
 const PAT_TOKEN = 'pat_724a6b2029a1e8784e115e022c8bb71c38d7733319a565b1b59a33c7fbb7ceb6';
 const DERIV_WS = 'wss://ws.binaryws.com/websockets/v3?app_id=' + APP_ID;
 

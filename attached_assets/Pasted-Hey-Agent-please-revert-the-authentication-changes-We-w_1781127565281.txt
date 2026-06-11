@@ -1,0 +1,24 @@
+Hey Agent, please revert the authentication changes. We want to completely remove the API token text input field and restore the official OAuth 2.0 "Login with Deriv" button interface.
+
+Please implement the following structural updates:
+
+Restore OAuth Logic: In src/lib/v75/derivAuth.ts, bring back the initiateLogin() and handleOAuthCallback() functions. The app must use the implicit OAuth flow that constructs the URL using https://oauth.deriv.com/oauth2/authorize and reads the numeric VITE_DERIV_APP_ID.
+
+Overhaul the UI Panel: In V75Analyzer.tsx, delete the password/token input field and the "Connect to Deriv" submit button. Replace it entirely with the stylized, red official "Login with Deriv" button component.
+
+Handle the Callback Parameters: Ensure handleOAuthCallback is actively listening on page load to parse the incoming URL query parameters (?acct1=...&token1=...) that Deriv sends back. It must extract the session token, call restoreToken(), save the session to localStorage, and immediately clean up the URL bar using window.history.replaceState.
+
+Enforce Numeric App ID Verification: Ensure the code uses a numeric App ID variable from your Replit Secrets (VITE_DERIV_APP_ID). If it detects a non-numeric token string in that variable, output a clean UI warning instructing the developer to use a registered numeric application ID.
+
+After updating these three files, run a clean build check to ensure everything compiles without errors.
+
+Critical Step on Your End
+For this button to function without getting stuck on Deriv's website, you must ensure your project variables are set up correctly:
+
+Open Secrets (or the .env file) inside your Replit workspace.
+
+Locate VITE_DERIV_APP_ID.
+
+Ensure this value is a purely numeric ID (e.g., 1089 or your custom registered application number from the Deriv Developer Portal).
+
+Note: Do not place your alphanumeric Personal Access Token (33vW...) into the App ID slot, or the "Login with Deriv" button will fail to redirect back to your Replit workspace.

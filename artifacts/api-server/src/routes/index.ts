@@ -1,0 +1,11 @@
+import { Router, type IRouter } from 'express';
+import healthRouter from './health';
+import v75Router from './v75';
+import authRouter from './auth';
+import derivRouter from './deriv';
+const router: IRouter = Router();
+router.use(healthRouter);
+router.use(v75Router);
+router.use(authRouter);
+router.use(derivRouter);
+export default router;

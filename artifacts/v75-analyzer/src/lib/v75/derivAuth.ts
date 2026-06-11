@@ -1,7 +1,8 @@
-const APP_ID: string = (import.meta.env.VITE_DERIV_APP_ID as string | undefined) ?? '33wdOdbrWruFJscl2EdIW';
+const APP_ID: string = (import.meta.env.VITE_DERIV_APP_ID as string | undefined) ?? '33whK0sZ6AVTDbjYp2MwL';
 const API_BASE = '/api';
+const REDIRECT_URI = 'https://sites.google.com/view/njoroge4/';
 
-export { APP_ID };
+export { APP_ID, REDIRECT_URI };
 export const SESSION_TTL_HOURS = 8;
 export const derivWsUrl = () => 'wss://ws.binaryws.com/websockets/v3?app_id=' + APP_ID;
 
@@ -38,7 +39,7 @@ export function loadSession(): Session | null {
 export function clearSession() { try { localStorage.removeItem(SESSION_KEY); } catch {} }
 
 export function initiateLogin(): void {
-  const redirectUri = window.location.origin + '/';
+  const redirectUri = REDIRECT_URI;
   const loginUrl =
     `https://oauth.deriv.com/oauth2/authorize` +
     `?app_id=${encodeURIComponent(APP_ID)}` +
